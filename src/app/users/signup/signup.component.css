@@ -1,0 +1,55 @@
+:host{
+  display: block;
+  width:100%;
+  margin:0px auto;
+}
+mat-card{
+  width:90%; margin: auto; opacity: 0.8;
+}
+mat-form-field{
+  width: 100%;
+}
+input{
+  width:100%;
+}
+.main{
+  min-height: 100%;
+  width: 100%;
+  height: 600px;
+  background-image: url('https://images.unsplash.com/photo-1497942304796-b8bc2cc898f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat:  no-repeat;
+  color:#fff;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.login{
+  margin-top: 10px;
+}
+.loginspan{
+  font-size: 0.8em; color: #777;
+}
+@media screen and (max-width:600px){
+  mat-card{
+    width:80%; margin: 20px auto; opacity: 0.8;
+    border-radius: 10%;
+  }
+  input{
+    width:100%; font-size: 0.8em; color: #000000;
+  }
+}
+@media screen and (min-width:600px){
+  mat-card{
+    width:60%; margin: 20px auto; opacity: 0.8;
+    border-radius: 10%;
+  }
+}
+@media screen and (min-width:768px){
+}
+@media screen and (min-width:900px){
+}
+@media screen and (min-width:1200px){
+}

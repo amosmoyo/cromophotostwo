@@ -1,0 +1,61 @@
+<div class="main">
+  <br>
+  <mat-card>
+    <div>
+      <form [formGroup]="postForm" (ngSubmit)="onClick()">
+
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            formControlName="title"
+            placeholder="enter post title"
+          >
+          <mat-error *ngIf="title.invalid && (title.dirty || title.touched)">
+            <mat-error *ngIf="title.errors.required">
+               Title is required
+            </mat-error>
+            <mat-error *ngIf="title.errors.minlength">
+               The length is less than three
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+
+        <div>
+          <div>
+            <button
+              type="button"
+              mat-raised-button
+              (click)="inputImg.click()"
+              color="accent">Upload image</button>
+            <input #inputImg type="file" (change)="onUploadImg($event)">
+          </div>
+          <div class="img" *ngIf="imageUrl !== '' && imageUrl">
+             <img [src]="imageUrl" [alt]="postForm.get('title')" />
+          </div>
+        </div>
+
+        <mat-form-field>
+          <textarea
+            type="text"
+            matInput
+            formControlName="description"
+            placeholder="enter post description"
+          >
+          </textarea>
+          <mat-error *ngIf="description.invalid && (description.dirty || description.touched)">
+            <mat-error *ngIf="description.errors.required">
+               description is required
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled] = 'postForm.pristine || postForm.invalid'
+          >Add Info</button>
+      </form>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,69 @@
+<div class="main">
+  <br>
+  <mat-card class="form">
+    <br>
+    <form (submit)="onSignup(singupFrom)" #singupFrom="ngForm">
+      <mat-form-field>
+        <input
+        type="text"
+        name="name"
+        matInput
+        ngModel
+        placeholder="enter name"
+        required
+        minlength = "4"
+        #username="ngModel"
+       >
+        <mat-error *ngIf="username.hasError('required')">
+          enter user please
+        </mat-error>
+        <mat-error *ngIf="username.hasError('minlength')">
+          characters musts greater than four
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="text"
+          name="email"
+          matInput
+          ngModel
+          placeholder="enter email"
+          required
+          email
+          #useremail="ngModel"
+        >
+        <mat-error *ngIf="useremail.hasError('required')">
+           enter email please
+        </mat-error>
+        <mat-error *ngIf="useremail.hasError('email')">
+           enter valid email please
+        </mat-error>
+     </mat-form-field>
+
+     <mat-form-field>
+       <input
+         type="password"
+         name="password"
+         matInput
+         ngModel
+         placeholder="enter password"
+         required
+         #userpass="ngModel"
+       >
+       <mat-error *ngIf="userpass.hasError('required')">
+            enter correct password
+       </mat-error>
+    </mat-form-field>
+
+      <button type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="singupFrom.pristine || singupFrom.invalid">Save</button>
+    </form>
+    <div class="login">
+      <span class="loginspan">Login if you have an account</span><br>
+      <button mat-raised-button routerLink="/auth/login" color="accent">Login</button>
+    </div>
+  </mat-card>
+</div>

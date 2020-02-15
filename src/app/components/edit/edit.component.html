@@ -1,0 +1,55 @@
+<div class="main">
+  <br>
+  <mat-card>
+    <form [formGroup] = "editForm" (ngSubmit) = "onEdit(editForm)">
+
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="title"
+        >
+        <mat-error *ngIf="title.invalid && (title.dirty || title.touched)">
+          <mat-error *ngIf="title.errors.required">
+            Enter title
+          </mat-error>
+          <mat-error *ngIf="title.errors.minlength">
+            The minimal length is four
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <div>
+        <div>
+          <button
+            type="button"
+            mat-raised-button
+            (click)="inputImg.click()"
+            color="accent">Change Image</button>
+          <input #inputImg type="file" (change)="onUploadImg($event)" name="image">
+        </div>
+        <div class="img" *ngIf="imageUrl !== '' && imageUrl && editForm.get('image')">
+           <img [src]="imageUrl" [alt]="editForm.get('title')" />
+        </div>
+      </div>
+
+      <mat-form-field>
+        <textarea
+          type="text"
+          matInput
+          formControlName="description"
+        >
+        </textarea>
+        <mat-error *ngIf="description.invalid && (description.dirty || description.touched)">
+          <mat-error *ngIf="description.errors.required">
+            Enter Description
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" [disabled]="editForm.pristine || editForm.invalid" color="primary">
+         Save
+      </button>
+    </form>
+  </mat-card>
+</div>

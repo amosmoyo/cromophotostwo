@@ -1,0 +1,29 @@
+.main{
+  width: 100%;
+  margin-top: 0px 10px 0px 10px;
+  text-align: center;
+}
+h1, h2, h3, h3, h4, p{
+  margin-top:5px; margin-bottom: 5px;
+  text-decoration: underline;
+}
+p{
+  text-decoration: none;
+}
+
+.submain{
+  width:80%; margin-left: auto; margin-right: auto;
+  background-color: rgb(190, 194, 194);
+}
+dt{
+  color: #000000;
+  text-decoration: underline;
+  margin-bottom: 5px;
+  font-weight:bold;
+}
+dl{
+  text-align: center;
+}
+.mid{
+  background-color:#999;
+}

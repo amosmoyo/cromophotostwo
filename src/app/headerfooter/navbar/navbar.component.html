@@ -1,0 +1,78 @@
+<div>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark" id="nav">
+    <a class="navbar-brand" routerLink='/' routerLinkActive='mat-accent'>CROMO</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+            <a routerLink='/' class="nav-item nav-link active">{{title}}</a>
+            <a routerLink='post'  class="nav-item nav-link" *ngIf="isUserAuth">All Post</a>
+            <a routerLink='about' class="nav-item nav-link">About</a>
+            <a href="#" class="nav-item nav-link disabled" tabindex="-1">Contacts</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+
+            <a routerLink="/create"
+               routerLinkActive="mat-accent"
+               *ngIf="isUserAuth"
+               mat-button class="nav-item nav-link"
+            >
+            Create Post
+            </a>
+
+            <a routerLink="/auth/login"
+              *ngIf="!isUserAuth"
+              routerLinkActive="mat-accent"
+              mat-button class="nav-item nav-link"
+            >
+            Login
+            </a>
+
+            <a routerLink="/auth/signup"
+               *ngIf="!isUserAuth"
+               routerLinkActive="mat-accent"
+               mat-button class="nav-item nav-link"
+               >
+               Signup
+             </a>
+
+            <a mat-button (click)="onLogout()" class="nav-item nav-link" *ngIf="isUserAuth">Logout</a>
+        </div>
+    </div>
+  </nav>
+<div>
+
+<!--
+  <div>
+  <mat-toolbar >
+    <ul>
+      <li>
+        <span *ngIf="!isUserAuth">
+          <button mat-button routerLink="/" [matMenuTriggerFor]="memu" routerLinkActive="mat-accent">{{title}}</button>
+          <mat-menu #memu="matMenu">
+            <button mat-menu-item routerLink="/">{{title}}</button>
+            <button mat-menu-item routerLink="about">About</button>
+          </mat-menu>
+        </span>
+        <span routerLink="/post" *ngIf="isUserAuth">
+          Post
+        </span>
+      </li>
+      <li *ngIf="isUserAuth" class="li">
+        <a routerLink="/create" routerLinkActive="mat-accent" mat-button>Create Post</a>
+      </li>
+      <li *ngIf="!isUserAuth" class="li">
+        <a routerLink="/auth/login" routerLinkActive="mat-accent" mat-button>Login</a>
+      </li>
+      <li *ngIf="!isUserAuth" class="li">
+        <a routerLink="/auth/signup" routerLinkActive="mat-accent" mat-button>Signup</a>
+      </li>
+      <li *ngIf="isUserAuth" class="li">
+        <button mat-button (click)="onLogout()">Logout</button>
+      </li>
+    </ul>
+  </mat-toolbar>
+</div>
+-->

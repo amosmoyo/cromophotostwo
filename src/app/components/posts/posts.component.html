@@ -1,0 +1,62 @@
+<div class="main">
+  <div class="loginas" *ngIf="isUserAuth">
+    you are login as~~<span>{{loginName}}</span>
+  </div>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div>
+      <div class="amos" *ngIf="posts.length > 0">
+          <div *ngIf="!isLoading" class="isLoading">
+            <div>
+              <div class="createpost" *ngIf="isUserAuth">
+                <span>
+                  <button mat-raised-button color="accent" class="creatBtn" (click)="onCreate()" routerLinkActive="mat-primary"  >Create Post</button>
+                </span>
+              </div>
+              <mat-card *ngFor="let post of posts">
+                <h6 id="left2">Post Create By~~<mark class="mark">{{post?.creatorName}}</mark></h6>
+                <div class="left">
+                  <h6 class="post">Post title:::::</h6>
+                  <p id="title">
+                    {{post?.title}}
+                  </p>
+                </div>
+                <mat-card-content>
+                  <div class="img">
+                    <img  src="{{ post?.imagePath }}" [alt]="post?.title"/>
+                  </div>
+                  <div>
+                    <h6 class="post">Post description:::::</h6>
+                    <p class="descriptio">
+                      {{post?.description}}
+                    </p>
+                  </div>
+                </mat-card-content>
+                <mat-card-footer>
+                  <mat-action-row *ngIf="isUserAuth && creatorID === post?.creatorId">
+                    <button mat-button color="primary" (click)="onEdit(post?.id)">Edit</button>
+                    <button mat-button color="accent" (click)="onDelete(post?.id)" routerLink="/">Delete</button>
+                  </mat-action-row>
+                </mat-card-footer>
+              </mat-card>
+            </div>
+            <br>
+            <br>
+            <h6 style="color: #333; background-color: #07DFF2; font-size: 0.7em; font-weight: bold; font-style: italic;">~~~view more~~~</h6>
+            <mat-paginator
+            [length]="pageLength"
+            [pageSize] = "pgSize"
+            [pageSizeOptions] = 'options'
+            (page)="onPage($event)"
+            class="page"
+          >
+          </mat-paginator>
+          </div>
+    </div>
+  </div>
+  <br>
+  <div class="err">
+    <p *ngIf="posts.length <= 0">
+      No posts available
+      </p>
+  </div>
+</div>

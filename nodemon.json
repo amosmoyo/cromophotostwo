@@ -1,0 +1,6 @@
+{
+    "env": {
+      "jwt_key": "This-String-Should-Be-Longer-Than-You-Think",
+      "password": "qiGlmy7Q"
+    }
+}

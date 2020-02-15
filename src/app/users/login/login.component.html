@@ -1,0 +1,47 @@
+<div class="main">
+  <br>
+  <mat-card>
+    <br>
+    <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+      <mat-form-field>
+         <input
+           name="email"
+           type="text"
+           matInput
+           ngModel
+           placeholder="Enter Email"
+           required
+           email
+           #useremail="ngModel"
+         >
+         <mat-error *ngIf="useremail.hasError('required')">
+            enter email please
+         </mat-error>
+         <mat-error *ngIf="useremail.hasError('email')">
+            enter valid email please
+         </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="password"
+          name="password"
+          matInput
+          ngModel
+          placeholder="enter password"
+          required
+          #userpass="ngModel"
+        >
+        <mat-error *ngIf="userpass.hasError('required')">
+             enter correct password
+        </mat-error>
+     </mat-form-field>
+
+      <button
+        mat-raised-button
+        type="submit" [disabled]="loginForm.pristine || loginForm.invalid"
+        color="primary"
+        >Save</button>
+    </form>
+  </mat-card>
+</div>
